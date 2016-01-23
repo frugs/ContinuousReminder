@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Repeating Vibrating Reminder</string>
+    <string name="switch_off">Repeating vibration off</string>
+    <string name="switch_on">Repeating vibration on</string>
+    <string name="interval_picker_label">Interval:</string>
+</resources>

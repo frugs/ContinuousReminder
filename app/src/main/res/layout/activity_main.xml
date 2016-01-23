@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.frugs.continuousreminder.MainActivity"
+    tools:deviceIds="wear">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/interval_picker_label"
+                android:text="@string/interval_picker_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+
+            <NumberPicker
+                android:id="@+id/interval_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/switch_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_off"
+            android:textSize="15sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <Switch
+            android:id="@+id/timer_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+
+</android.support.wearable.view.BoxInsetLayout>

@@ -21,7 +21,8 @@ public class MainActivity extends WearableActivity {
 
     private BoxInsetLayout mContainerView;
     private TextView mSwitchLabelTextView;
-    private TextView mIntervalPickerTextView;
+    private TextView mIntervalPickerLabelTextView;
+    private NumberPicker mIntervalPicker;
 
     private TimerController mTimerController;
     private ScheduledExecutorService mTimerRunnerExecutor;
@@ -34,7 +35,7 @@ public class MainActivity extends WearableActivity {
 
         mContainerView = (BoxInsetLayout) findViewById(R.id.container);
         mSwitchLabelTextView = (TextView) findViewById(R.id.switch_label);
-        mIntervalPickerTextView = (TextView) findViewById(R.id.interval_picker_label);
+        mIntervalPickerLabelTextView = (TextView) findViewById(R.id.interval_picker_label);
 
         final Executor mainThreadExecutor = new Executor() {
             @Override
@@ -69,12 +70,12 @@ public class MainActivity extends WearableActivity {
             }
         });
 
-        final NumberPicker intervalPicker = (NumberPicker) findViewById(R.id.interval_picker);
-        intervalPicker.setMinValue(0);
-        intervalPicker.setMaxValue(999);
-        intervalPicker.setValue(DEFAULT_INTERVAL_SECONDS);
-        intervalPicker.setWrapSelectorWheel(false);
-        intervalPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+        mIntervalPicker = (NumberPicker) findViewById(R.id.interval_picker);
+        mIntervalPicker.setMinValue(0);
+        mIntervalPicker.setMaxValue(999);
+        mIntervalPicker.setValue(DEFAULT_INTERVAL_SECONDS);
+        mIntervalPicker.setWrapSelectorWheel(false);
+        mIntervalPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 mTimerController.setTimerValue(newVal * 1000);
@@ -113,11 +114,13 @@ public class MainActivity extends WearableActivity {
         if (isAmbient()) {
             mContainerView.setBackgroundColor(getResources().getColor(android.R.color.black));
             mSwitchLabelTextView.setTextColor(getResources().getColor(android.R.color.white));
-            mIntervalPickerTextView.setTextColor(getResources().getColor(android.R.color.white));
+            mIntervalPickerLabelTextView.setTextColor(getResources().getColor(android.R.color.white));
+            mIntervalPicker.setBackgroundColor(getResources().getColor(android.R.color.white));
         } else {
             mContainerView.setBackground(null);
             mSwitchLabelTextView.setTextColor(getResources().getColor(android.R.color.black));
-            mIntervalPickerTextView.setTextColor(getResources().getColor(android.R.color.black));
+            mIntervalPickerLabelTextView.setTextColor(getResources().getColor(android.R.color.black));
+            mIntervalPicker.setBackgroundColor(getResources().getColor(android.R.color.transparent));
         }
     }
 }
